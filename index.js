@@ -9,8 +9,8 @@ const students = [
   },
   {
     id: 2,
-    name: "Shehroze",
-    email: "shehroze@gmail.com",
+    name: "Alam",
+    email: "alam@gmail.com",
     age: 28,
   },
   {
