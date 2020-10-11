@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 
 const students = [
   {
-    id: 1,  
+    id: 1,
     name: "Ali",
     email: "ali@gmail.com",
     age: 21,
@@ -14,7 +14,7 @@ const students = [
     age: 28,
   },
   {
-    id: 3,  
+    id: 3,
     name: "Anas",
     email: "anas@gmail.com",
     age: 25,
@@ -22,9 +22,15 @@ const students = [
 ];
 
 const resolvers = {
-    Query: {
-        students: () => students,
+  Query: {
+    students: () => students,
+  },
+  Mutation: {
+    addStudent: (_, { input }) => {
+      console.log(input);
+      return input;
     },
+  },
 };
 
 const typeDefs = gql`
@@ -34,8 +40,17 @@ const typeDefs = gql`
     email: String
     age: Int
   }
+  input StdInput {
+    id: Int
+    name: String
+    email: String
+    age: Int
+  }
   type Query {
     students: [Student]
+  }
+  type Mutation {
+    addStudent(input: StdInput): Student
   }
 `;
 
