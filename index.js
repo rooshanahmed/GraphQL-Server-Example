@@ -26,16 +26,26 @@ const resolvers = {
     students: () => students,
   },
   Mutation: {
-    addStudent: (_, { input }) => {
-      console.log(input);
-      return input;
+    addStudent: (e, { input }) => {
+      students.push({
+        name: input.name,
+        age: input.age,
+        email: input.email,
+        id: input.id,
+      });
+      return {
+        name: input.name,
+        age: input.age,
+        email: input.email,
+        id: input.id,
+      };
     },
   },
 };
 
 const typeDefs = gql`
   type Student {
-    id: Int  
+    id: Int
     name: String
     email: String
     age: Int
